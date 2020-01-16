@@ -8,3 +8,4 @@
 require 'config/config.php';
 require 'data/nav.php';
 require 'view/index.view.php';
+require 'view/bilietas.view.php';
