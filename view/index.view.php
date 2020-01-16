@@ -11,7 +11,10 @@
 </head>
 <body>
 <?php
-$padaliniai = ['IT', 'Fin', 'Admin'];
+$skrydzioNr = ['23145', '98751', '64587'];
+$bagazas = [10, 20, 30, 40];
+$isKur = ['KUN', 'VLN', 'PGN'];
+$iKur = ['FRA', 'FRA', 'IEV'];
 
 if(isset($_POST['submit'])){
     foreach ($_POST as $value){
@@ -26,20 +29,48 @@ if(isset($_POST['submit'])){
         <div class="col-sm">
 <form method="post">
     <div class="form-group">
-        <select name="" id="" class="form-control">
-            <option selected disabled>---Pasirinkti----</option>
-        <?php foreach ($padaliniai as $padalinys): ?>
-        <option value="<?=$padalinys;?>"><?=$padalinys;?></option>
+        <select name="skrydziai" class="form-control">
+            <option selected disabled>--Pasirinkite skrydzio numeri--</option>
+        <?php foreach ($skrydzioNr as $skrydis): ?>
+        <option value="<?=$skrydis;?>"><?=$skrydis;?></option>
             <?php endforeach; ?>
         </select>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Pavarde</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" name="pavarde">
+        <select name="bagazas" class="form-control">
+            <option selected disabled>--Iveskite bagazo svori---</option>
+            <?php foreach ($bagazas as $kilogramai): ?>
+                <option value="<?=$kilogramai;?>"><?=$kilogramai;?></option>
+            <?php endforeach; ?>
+        </select>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Email</label>
-        <input type="email" class="form-control" id="exampleInputPassword1" name="email">
+        <select name="padaliniai" class="form-control">
+            <option selected disabled>---Kryptis i prieki---</option>
+            <?php foreach ($isKur as $kryptisPirmyn): ?>
+                <option value="<?=$kryptisPirmyn;?>"><?=$kryptisPirmyn;?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <select name="iKUr"  class="form-control">
+            <option selected disabled>---Kryptis atgal----</option>
+            <?php foreach ($iKur as $kryptisAtgal): ?>
+                <option value="<?=$kryptisAtgal;?>"><?=$kryptisAtgal;?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="asmensKodas">Suveskite asmens koda</label>
+        <input type="number"  class="form-control" id="asmensKodas" name="asmkodas">
+    </div>
+    <div class="form-group">
+        <label for="kaina">Suveskite skrydzio kaina</label>
+        <input type="number"  class="form-control" id="kaina" name="kaina">
+    </div>
+    <div class="form-group">
+        <label for="pastaba">Pastaba</label>
+        <textarea class="form-control" name="pastaba" id="pastaba" rows="3"></textarea>
     </div>
     <button type="submit" class="btn btn-primary" name="submit">Patvirtinti</button>
 </form>
