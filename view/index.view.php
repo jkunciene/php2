@@ -10,24 +10,38 @@
     <title><?=sitetitle; ?></title>
 </head>
 <body>
+<?php
+$padaliniai = ['IT', 'Fin', 'Admin'];
+
+if(isset($_POST['submit'])){
+    foreach ($_POST as $value){
+        echo "$value<br>";
+    }
+}
+?>
+
+
 <div class="container ">
     <div class="row">
         <div class="col-sm">
-<form>
+<form method="post">
     <div class="form-group">
-        <label for="exampleInputEmail1">Vardas</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <select name="" id="" class="form-control">
+            <option selected disabled>---Pasirinkti----</option>
+        <?php foreach ($padaliniai as $padalinys): ?>
+        <option value="<?=$padalinys;?>"><?=$padalinys;?></option>
+            <?php endforeach; ?>
+        </select>
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Pavarde</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="text" class="form-control" id="exampleInputPassword1" name="pavarde">
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Email</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="email" class="form-control" id="exampleInputPassword1" name="email">
     </div>
-
-    <button type="submit" class="btn btn-primary">Patvirtinti</button>
+    <button type="submit" class="btn btn-primary" name="submit">Patvirtinti</button>
 </form>
 </div>
 </div>
