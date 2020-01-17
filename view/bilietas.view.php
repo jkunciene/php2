@@ -8,14 +8,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="view/css/style.css">
-    <title><?= sitetitle; ?></title>
+    <title>Forma</title>
 </head>
 <body>
-<?php  $kilogramai = intval($_POST['bagazas']);
-$kainyte = intval($_POST['kaina']);
-if ($kilogramai >= 20){
-    $kainyte+=30;
-} ?>
+<?php
+
+$pastaba = $_POST['pastaba'];
+$kryptisPirmyn = $_POST['kryptisPirmyn'];
+$kryptisAtgal = $_POST['iKUr'];
+$vardas = $_POST['vardas'];
+$pavarde = $_POST['pavarde'];
+$asmensKodas =  $_POST['asmkodas'];
+$kilogramai = intval($_POST['bagazas']);
+
+        $kaina = intval($_POST['kaina']);
+                if ($kilogramai >= 20) {
+                    $kainyte = $kaina + 30;
+                } else {$kainyte=$kaina;}?>
 <div class="container">
     <div class="row pirmaEilute">
         <div class="col-sm text-center ">
@@ -24,29 +33,29 @@ if ($kilogramai >= 20){
     </div>
     <div class="row antraEilute">
         <div class="col-sm">
-
+            <p>Skrenda is...</p>
         </div>
         <div class="col-sm">
-
+            <p>Skrenda i...</p>
         </div>
         <div class="col-sm">
-
+            <p>Keleivio info</p>
         </div>
     </div>
     <div class="row treciaEilute">
         <div class="col-sm">
-
+            <p><?= $kryptisPirmyn; ?></p>
         </div>
         <div class="col-sm">
-
+            <p><?= $kryptisAtgal; ?></p>
         </div>
         <div class="col-sm">
-
+            <p><?= $vardas."  ".$pavarde; ?></p>
         </div>
     </div>
     <div class="row ketvirtaEilute">
-        <div class="col-8">
-
+        <div class="col-6">
+            <p>Pastaba: <?= $pastaba; ?></p>
 
         </div>
         <div class="col">
@@ -55,7 +64,7 @@ if ($kilogramai >= 20){
                     <p>Gesamte Preis:</p>
                 </div>
                 <div class="col">
-                    <p><?=$kainyte; ?></p>
+                    <p><?= $kainyte; ?></p>
                 </div>
             </div>
             <div class="row">
@@ -67,5 +76,5 @@ if ($kilogramai >= 20){
         </div>
     </div>
 
-
+    <a href="../index.php">Grizti</a>
 </div>

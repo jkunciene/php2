@@ -16,21 +16,69 @@ $skrydzioNr = ['23145', '98751', '64587'];
 $bagazas = [10, 20, 30, 40];
 $isKur = ['KUN', 'VLN', 'PGN'];
 $iKur = ['FRA', 'FRA', 'IEV'];
-
+$validation_errors=[];
 if (isset($_POST['submit'])) {
-    foreach ($_POST as $value) {
-       // echo "$value<br>";
+    if (!preg_match('/^[0-9]{11}$/',
+        $_POST['asmkodas'])){
+        $validation_errors[] = "neatitinka asmens kodo sandaros";
+    }
+    else{
+        $_POST['asmkodas'];
+    }
+    if (!preg_match('/^[\w\d]{1,100}$/',
+        $_POST['vardas'])){
+        $validation_errors[] = "Zinutes tekstas, negali virsyti 100 simboliu ir trumpesnis uz 1";
+    }
+    else{
+        $_POST['vardas'];
+    }
+    if (!preg_match('/^[\w\d]{1,100}$/',
+        $_POST['pavarde'])){
+        $validation_errors[] = "Zinutes tekstas, negali virsyti 100 simboliu ir trumpesnis uz 1";
+    }
+    else{
+        $_POST['pavarde'];
+    }
+    if (!preg_match('/^[\w\d]{50,1000}$/',
+        $_POST['pastaba'])){
+        $validation_errors[] = "Zinutes tekstas, negali virsyti 1000 simboliu ir trumpesnis uz 50";
+    }
+    else{
+        $_POST['pastaba'];
     }
 
+    $pastaba = $_POST['pastaba'];
+    $kryptisPirmyn = $_POST['kryptisPirmyn'];
+    $kryptisAtgal = $_POST['iKUr'];
+    $vardas = $_POST['vardas'];
+    $pavarde = $_POST['pavarde'];
+    $asmensKodas =  $_POST['asmkodas'];
+    $kilogramai = intval($_POST['bagazas']);
+    $kaina = intval($_POST['kaina']);
+
+
+if ($kilogramai >= 20) {
+    $kainyte = $kaina + 30;
+} else {$kainyte=$kaina;}
 }
 ?>
 
+<?php if($validation_errors) :?>
+<div class="errors">
+    <ul>
+        <?php foreach($validation_errors as $error) :?>
+        <li><?= $error; ?></li>
+
+    </ul>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
 
 <div class="container ">
     <div class="row">
         <div class="col-sm text-center ">
             <h2 class="p-5">Lektuvo bilietu forma</h2>
-            <form method="post" action="view/bilietas.view.php">
+            <form method="post" action="">
                 <div class="form-group">
                     <select name="skrydziai" class="form-control">
                         <option selected disabled>--Pasirinkite skrydzio numeri--</option>
@@ -48,7 +96,7 @@ if (isset($_POST['submit'])) {
                     </select>
                 </div>
                 <div class="form-group">
-                    <select name="padaliniai" class="form-control">
+                    <select name="kryptisPirmyn" class="form-control">
                         <option selected disabled>---Kryptis i prieki---</option>
                         <?php foreach ($isKur as $kryptisPirmyn): ?>
                             <option value="<?= $kryptisPirmyn; ?>"><?= $kryptisPirmyn; ?></option>
@@ -64,8 +112,16 @@ if (isset($_POST['submit'])) {
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="asmensKodas">Suveskite asmens koda</label>
-                    <input type="number" class="form-control" id="asmensKodas" name="asmkodas">
+                    <label for="vardas">Suveskite keleivio varda</label>
+                    <input type="text" class="form-control" id="vardas" name="vardas">
+                </div>
+                <div class="form-group">
+                    <label for="pavarde">Suveskite keleivio pavarde</label>
+                    <input type="text" class="form-control" id="pavarde" name="pavarde">
+                </div>
+                <div class="form-group">
+                    <label for="asmkodas">Suveskite asmens koda</label>
+                    <input type="number" class="form-control" id="asmkodas" name="asmkodas">
                 </div>
                 <div class="form-group">
                     <label for="kaina">Suveskite skrydzio kaina</label>
@@ -81,6 +137,57 @@ if (isset($_POST['submit'])) {
     </div>
 </div>
 
+<div class="container bilietas">
+    <div class="row pirmaEilute">
+        <div class="col-sm text-center ">
+            <h4>Detali skrydzio informacija</h4>
+        </div>
+    </div>
+    <div class="row antraEilute">
+        <div class="col-sm">
+            <p>Skrenda is...</p>
+        </div>
+        <div class="col-sm">
+            <p>Skrenda i...</p>
+        </div>
+        <div class="col-sm">
+            <p>Keleivio info</p>
+        </div>
+    </div>
+    <div class="row treciaEilute">
+        <div class="col-sm">
+            <p><?= $kryptisPirmyn; ?></p>
+        </div>
+        <div class="col-sm">
+            <p><?= $kryptisAtgal; ?></p>
+        </div>
+        <div class="col-sm">
+            <p><?= $vardas."  ".$pavarde; ?></p>
+        </div>
+    </div>
+    <div class="row ketvirtaEilute">
+        <div class="col-6">
+            <p>Pastaba: <?= $pastaba; ?></p>
+
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-9 text-right">
+                    <p>Gesamte Preis:</p>
+                </div>
+                <div class="col">
+                    <p><?= $kainyte; ?></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-left">
+                    <p>Die Preise sind in Euro gegeben</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
 
 <footer>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
