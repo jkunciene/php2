@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
     else{
         $_POST['pavarde'];
     }
-    if (!preg_match('/^[\w\d]{50,1000}$/',
+    if (!preg_match('/^[\w\d]{5,100}$/',
         $_POST['pastaba'])){
         $validation_errors[] = "Zinutes tekstas, negali virsyti 1000 simboliu ir trumpesnis uz 50";
     }
@@ -72,6 +72,7 @@ if ($kilogramai >= 20) {
     </ul>
     <?php endforeach; ?>
 </div>
+    
 <?php endif; ?>
 
 <div class="container ">
