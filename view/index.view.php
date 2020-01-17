@@ -18,49 +18,49 @@ $isKur = ['KUN', 'VLN', 'PGN'];
 $iKur = ['FRA', 'FRA', 'IEV'];
 $validation_errors=[];
 if (isset($_POST['submit'])) {
-    if (!preg_match('/^[0-9]{11}$/',
-        $_POST['asmkodas'])){
-        $validation_errors[] = "neatitinka asmens kodo sandaros";
+    if (!isset($_POST['skrydziai'])) {
+        $validation_errors[] = "Skrydzio numeris privalo buti ivestas";
     }
-    else{
-        $_POST['asmkodas'];
+    if (!isset($_POST['bagazas'])) {
+        $validation_errors[] = "Bagazo svoris privalo buti ivestas";
     }
-    if (!preg_match('/^[\w\d]{1,100}$/',
-        $_POST['vardas'])){
-        $validation_errors[] = "Zinutes tekstas, negali virsyti 100 simboliu ir trumpesnis uz 1";
-    }
-    else{
+    if (!preg_match('/\w{1,100}$/',
+        $_POST['vardas'])) {
+        $validation_errors[] = "vardas negali virsyti 100 simboliu ir trumpesnis uz 1";
+    } else {
         $_POST['vardas'];
     }
-    if (!preg_match('/^[\w\d]{1,100}$/',
-        $_POST['pavarde'])){
-        $validation_errors[] = "Zinutes tekstas, negali virsyti 100 simboliu ir trumpesnis uz 1";
-    }
-    else{
+    if (!preg_match('/\w{1,100}/',
+        $_POST['pavarde'])) {
+        $validation_errors[] = "pavarde negali virsyti 100 simboliu ir trumpesnis uz 1";
+    } else {
         $_POST['pavarde'];
     }
-    if (!preg_match('/^[\w\d]{5,100}$/',
-        $_POST['pastaba'])){
-        $validation_errors[] = "Zinutes tekstas, negali virsyti 1000 simboliu ir trumpesnis uz 50";
+    if (!preg_match('/^([3-6]\d{11})$/',
+        $_POST['asmkodas'])) {
+        $validation_errors[] = "asmens kodas netinkamas formatas";
+    } else {
+        $_POST['asmkodas'];
     }
-    else{
+    if (!preg_match('/[\w\s{50,1000}]/i',
+        $_POST['pastaba'])) {
+        $validation_errors[] = "netinkamas pastabos formatas";
+    } else {
         $_POST['pastaba'];
     }
+}
+$pastaba = $_POST['pastaba'];
+$kryptisPirmyn = $_POST['kryptisPirmyn'];
+$kryptisAtgal = $_POST['iKUr'];
+$vardas = $_POST['vardas'];
+$pavarde = $_POST['pavarde'];
+$asmensKodas =  $_POST['asmkodas'];
+$kilogramai = intval($_POST['bagazas']);
 
-    $pastaba = $_POST['pastaba'];
-    $kryptisPirmyn = $_POST['kryptisPirmyn'];
-    $kryptisAtgal = $_POST['iKUr'];
-    $vardas = $_POST['vardas'];
-    $pavarde = $_POST['pavarde'];
-    $asmensKodas =  $_POST['asmkodas'];
-    $kilogramai = intval($_POST['bagazas']);
-    $kaina = intval($_POST['kaina']);
-
-
+$kaina = intval($_POST['kaina']);
 if ($kilogramai >= 20) {
     $kainyte = $kaina + 30;
 } else {$kainyte=$kaina;}
-}
 ?>
 
 <?php if($validation_errors) :?>
@@ -68,9 +68,8 @@ if ($kilogramai >= 20) {
     <ul>
         <?php foreach($validation_errors as $error) :?>
         <li><?= $error; ?></li>
-
-    </ul>
     <?php endforeach; ?>
+    </ul>
 </div>
     
 <?php endif; ?>
@@ -79,7 +78,7 @@ if ($kilogramai >= 20) {
     <div class="row">
         <div class="col-sm text-center ">
             <h2 class="p-5">Lektuvo bilietu forma</h2>
-            <form method="post" action="">
+            <form method="post" >
                 <div class="form-group">
                     <select name="skrydziai" class="form-control">
                         <option selected disabled>--Pasirinkite skrydzio numeri--</option>
@@ -137,8 +136,7 @@ if ($kilogramai >= 20) {
         </div>
     </div>
 </div>
-
-<div class="container bilietas">
+<div class="container">
     <div class="row pirmaEilute">
         <div class="col-sm text-center ">
             <h4>Detali skrydzio informacija</h4>
@@ -182,14 +180,13 @@ if ($kilogramai >= 20) {
             </div>
             <div class="row">
                 <div class="col text-left">
-                    <p>Die Preise sind in Euro gegeben</p>
+                    <p>asmens kodas <?= $asmensKodas; ?></p>
                 </div>
             </div>
 
         </div>
     </div>
-    </div>
-
+</div>
 <footer>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
