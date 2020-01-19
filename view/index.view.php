@@ -49,18 +49,7 @@ if (isset($_POST['submit'])) {
         $_POST['pastaba'];
     }
 }
-$pastaba = $_POST['pastaba'];
-$kryptisPirmyn = $_POST['kryptisPirmyn'];
-$kryptisAtgal = $_POST['iKUr'];
-$vardas = $_POST['vardas'];
-$pavarde = $_POST['pavarde'];
-$asmensKodas =  $_POST['asmkodas'];
-$kilogramai = intval($_POST['bagazas']);
 
-$kaina = intval($_POST['kaina']);
-if ($kilogramai >= 20) {
-    $kainyte = $kaina + 30;
-} else {$kainyte=$kaina;}
 ?>
 
 <?php if($validation_errors) :?>
@@ -132,61 +121,57 @@ if ($kilogramai >= 20) {
                     <textarea class="form-control" name="pastaba" id="pastaba" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" name="submit">Patvirtinti</button>
+                <?php if (isset($_POST["submit"]) && !$validation_errors):?>
+
+                    <?php $pastaba = $_POST['pastaba'];
+                    $kryptisPirmyn = $_POST['kryptisPirmyn'];
+                    $kryptisAtgal = $_POST['iKUr'];
+                    $vardas = $_POST['vardas'];
+                    $pavarde = $_POST['pavarde'];
+                    $asmensKodas =  $_POST['asmkodas'];
+                    $kilogramai = intval($_POST['bagazas']);
+
+                    $kaina = intval($_POST['kaina']);
+                    if ($kilogramai >= 20) {
+                        $kainyte = $kaina + 30;
+                    } else {$kainyte=$kaina;}
+                    ?>
+                    <button type="button" name="submit" class="btn btn-primary" data-toggle="modal" data-target="#ticket">
+                        Spausdinti bilietą
+                    </button>
+                <?php endif;?>
             </form>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row pirmaEilute">
-        <div class="col-sm text-center ">
-            <h4>Detali skrydzio informacija</h4>
-        </div>
-    </div>
-    <div class="row antraEilute">
-        <div class="col-sm">
-            <p>Skrenda is...</p>
-        </div>
-        <div class="col-sm">
-            <p>Skrenda i...</p>
-        </div>
-        <div class="col-sm">
-            <p>Keleivio info</p>
-        </div>
-    </div>
-    <div class="row treciaEilute">
-        <div class="col-sm">
-            <p><?= $kryptisPirmyn; ?></p>
-        </div>
-        <div class="col-sm">
-            <p><?= $kryptisAtgal; ?></p>
-        </div>
-        <div class="col-sm">
-            <p><?= $vardas."  ".$pavarde; ?></p>
-        </div>
-    </div>
-    <div class="row ketvirtaEilute">
-        <div class="col-6">
-            <p>Pastaba: <?= $pastaba; ?></p>
 
-        </div>
-        <div class="col">
-            <div class="row">
-                <div class="col-9 text-right">
-                    <p>Gesamte Preis:</p>
-                </div>
-                <div class="col">
-                    <p><?= $kainyte; ?></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-left">
-                    <p>asmens kodas <?= $asmensKodas; ?></p>
-                </div>
-            </div>
 
+
+<div class = "container ticket fade" id="ticket">
+    <div class = "row">
+        <div class = "col-sm-12"><h3>Bilieto informacija</h3></div>
+    </div>
+    <div class = "row">
+        <div class = "col-sm">
+            <div class = "row">Jūsų skrydžio numeris: <?=$skrydis?></div>
+            <div class = "row">Kryptis pirmyn: <?=$kryptisPirmyn?></div>
+            <div class = "row">Kryptis atgal: <?=$kryptisAtgal?></div>
+        </div>
+        <div class = "col-sm">
+            <div class = "row">Keleivio vardas: <?=$vardas?></div>
+            <div class = "row">Keleivio pavardė: <?=$pavarde?></div>
+            <div class = "row">Keleivio asmens kodas: <?=$asmensKodas?></div>
+        </div>
+        <div class = "col-sm">
+            <div class = "row">Skrydzio perziura</div>
+            <div class = "row">Skrydžio kaina: <?=$kaina?></div>
+            <div class = "row">Bagažo kiekis: <?=$kilogramai?>kg</div>
+            <div class = "row">Bendra bilieto kaina: <?=$kainyte?></div>
         </div>
     </div>
+    <div class = "row">Pastabos: <?=$pastaba?></div>
 </div>
+
 <footer>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
