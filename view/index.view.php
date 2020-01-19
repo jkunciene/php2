@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
     } else {
         $_POST['pavarde'];
     }
-    if (!preg_match('/^([3-6]\d{11})$/',
+    if (!preg_match('/^([3-6]\d{10})$/',
         $_POST['asmkodas'])) {
         $validation_errors[] = "asmens kodas netinkamas formatas";
     } else {

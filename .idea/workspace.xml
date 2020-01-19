@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6449980-9c09-4134-aed3-845101006a86" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/bilietas.view.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/css/style.css" afterDir="false" />
+    <list default="true" id="a6449980-9c09-4134-aed3-845101006a86" name="Default" comment="asmens kodo validacija? nu kodel visada klaida?">
       <change beforePath="$PROJECT_DIR$/view/index.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/index.view.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/index.view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+            <state relative-caret-position="187">
+              <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -151,7 +148,7 @@
       <updated>1579155384757</updated>
       <workItem from="1579155385988" duration="10775000" />
       <workItem from="1579255467648" duration="12126000" />
-      <workItem from="1579276220986" duration="4600000" />
+      <workItem from="1579276220986" duration="5414000" />
     </task>
     <task id="LOCAL-00001" summary="formos tikrinimas">
       <created>1579266050773</created>
@@ -160,11 +157,18 @@
       <option name="project" value="LOCAL" />
       <updated>1579266050773</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="asmens kodo validacija? nu kodel visada klaida?">
+      <created>1579281001314</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579281001314</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27501000" />
+    <option name="totallyTimeSpent" value="28315000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-19" y="8" width="1566" height="1047" extended-state="0" />
@@ -215,7 +219,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="formos tikrinimas" />
-    <option name="LAST_COMMIT_MESSAGE" value="formos tikrinimas" />
+    <MESSAGE value="asmens kodo validacija? nu kodel visada klaida?" />
+    <option name="LAST_COMMIT_MESSAGE" value="asmens kodo validacija? nu kodel visada klaida?" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/config/config.php">
@@ -251,8 +256,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/index.view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        <state relative-caret-position="187">
+          <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
         </state>
       </provider>
     </entry>
