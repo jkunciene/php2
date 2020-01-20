@@ -25,28 +25,28 @@ if (isset($_POST['submit'])) {
         $validation_errors[] = "Bagazo svoris privalo buti ivestas";
     }
     if (!preg_match('/\w{1,100}$/',
-        $_POST['vardas'])) {
+        trim(htmlspecialchars($_POST['vardas']))) ){
         $validation_errors[] = "vardas negali virsyti 100 simboliu ir trumpesnis uz 1";
     } else {
-        $_POST['vardas'];
+        $_POST['vardas'] = trim(htmlspecialchars( $_POST['vardas']));
     }
     if (!preg_match('/\w{1,100}/',
-        $_POST['pavarde'])) {
+        trim(htmlspecialchars($_POST['pavarde'])))) {
         $validation_errors[] = "pavarde negali virsyti 100 simboliu ir trumpesnis uz 1";
     } else {
-        $_POST['pavarde'];
+        $_POST['pavarde']= trim(htmlspecialchars($_POST['pavarde']));
     }
     if (!preg_match('/^([3-6]\d{10})$/',
-        $_POST['asmkodas'])) {
+        trim(htmlspecialchars($_POST['asmkodas'])))){
         $validation_errors[] = "asmens kodas netinkamas formatas";
     } else {
-        $_POST['asmkodas'];
+        $_POST['asmkodas'] = trim(htmlspecialchars($_POST['asmkodas']));
     }
     if (!preg_match('/[\w\s{50,1000}]/i',
-        $_POST['pastaba'])) {
+        trim(htmlspecialchars($_POST['pastaba'])))) {
         $validation_errors[] = "netinkamas pastabos formatas";
     } else {
-        $_POST['pastaba'];
+        $_POST['pastaba'] = trim(htmlspecialchars($_POST['pastaba']));
     }
 }
 
